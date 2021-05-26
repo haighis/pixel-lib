@@ -1,0 +1,25 @@
+# Functional Core
+# A Profile libary that is developed as a functional core.
+# The functional core is a library implementation.
+# The functional core should work on data that’s validated and safe. It should be predictable, so it avoids side effects.
+# A functional core is means to easily reason about the application core business logic that is the same pattern
+# created by James Edward Gray and Bruce A. Tate found in the book "Designing Elixir Systems with OTP".
+#
+# Design
+# The Profile lib uses:
+#
+# Usage
+# newmap = Profile.add(newmap, %{fullname: "John Albert Haigh"})
+#
+# Profile Data Model
+# Fields
+defmodule Profile do
+  @profile_name :profile
+  def add(profiles, %DataModel.Profile{} = p) do
+    # IO.inspect a # key: key,
+    new_item = p
+    the_items = Map.put(profiles, @profile_name, new_item)
+    # IO.inspect the_items
+    the_items
+  end
+end
