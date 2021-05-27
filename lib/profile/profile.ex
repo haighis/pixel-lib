@@ -9,17 +9,14 @@
 # The Profile lib uses:
 #
 # Usage
-# newmap = Profile.add(newmap, %{fullname: "John Albert Haigh"})
+# newmap = Profile.add(%{},%DataModel.Profile{fullname: "kk", age: 35})
 #
 # Profile Data Model
 # Fields
 defmodule Profile do
   @profile_name :profile
-  def add(profiles, %DataModel.Profile{} = p) do
-    # IO.inspect a # key: key,
-    new_item = p
-    the_items = Map.put(profiles, @profile_name, new_item)
-    # IO.inspect the_items
+  def add(profiles, p) do
+    the_items = Map.put(profiles, @profile_name, p)
     the_items
   end
 end

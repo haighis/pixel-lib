@@ -10,18 +10,16 @@
 # - Slugify
 # - 
 # Usage
-# newmap = Friends.add_friend %{}, %DataModel.Friend{fullname: "John"}
-# newmap = Friends.add_friend newmap, %DataModel.Friend{fullname: "Janis"}
+# newmap = Friends.add_friend %{}, %{fullname: "John", age: 34}
+# newmap = Friends.add_friend newmap, %{fullname: "Janis"}
 #
 # Friends Data Model
 # Fields
 defmodule Friends do
-  def add_friend(friends, %DataModel.Friend{} = f) do
-    # IO.inspect a # key: key,
+  def add_friend(friends, f) do 
     slugged_key = Slug.slugify(f.fullname, separator: ?_)
-    new_item = f #%{:fullname => a.fullname, :age => a.age, date_created: a.date_created}
-    the_items = Map.put(friends, String.to_atom(slugged_key), new_item)
-    # IO.inspect the_items
+    #new_item = f #%{:fullname => a.fullname, :age => a.age, date_created: a.date_created}
+    the_items = Map.put(friends, String.to_atom(slugged_key), f)
     the_items
   end
 end
