@@ -17,21 +17,25 @@
 # Fields
 defmodule Friends do
   def add_friend(friends, f) do 
-    slugged_key = Slug.slugify(f.fullname, separator: ?_)
-    #new_item = f #%{:fullname => a.fullname, :age => a.age, date_created: a.date_created}
-    the_items = Map.put(friends, String.to_atom(slugged_key), f)
+    the_items = Map.put(friends, String.to_atom(f.userkey), f)
     the_items
   end
 
-  def add_friend2(newfriends, f) do 
-    slugged_key = Slug.slugify(f.fullname, separator: ?_)
-    
-    initial = %{friends: %{count: 1}}
+  # Slug code 
+  #slugged_key = Slug.slugify(f.fullname, separator: ?_)
+    #the_items = Map.put(friends, String.to_atom(slugged_key), f)
 
-    existing_friends = Map.fetch(newfriends, :friends)
-    #new_item = f #%{:fullname => a.fullname, :age => a.age, date_created: a.date_created}
-    the_items = Map.put(existing_friends, String.to_atom(slugged_key), f)
-    friends_map = %{newfriends | friends: the_items}
-    friends_map
-  end
+    #new_friend = Map.put(f, :userkey, slugged_key)
+
+  # def add_friend2(newfriends, f) do 
+  #   slugged_key = Slug.slugify(f.fullname, separator: ?_)
+    
+  #   initial = %{friends: %{count: 1}}
+
+  #   existing_friends = Map.fetch(newfriends, :friends)
+  #   #new_item = f #%{:fullname => a.fullname, :age => a.age, date_created: a.date_created}
+  #   the_items = Map.put(existing_friends, String.to_atom(slugged_key), f)
+  #   friends_map = %{newfriends | friends: the_items}
+  #   friends_map
+  # end
 end
