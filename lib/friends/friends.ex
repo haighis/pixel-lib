@@ -10,9 +10,13 @@
 # - Slugify
 # - 
 # Usage
-# newmap = Friends.add_friend %{}, %{fullname: "John", age: 34}
+# newmap = Friends.add_friend %{}, %{fullname: "John", age: 34, userkey: "john"}
 # newmap = Friends.add_friend newmap, %{fullname: "Janis"}
-#
+# newmap = Friends.add_friend %{:friends [%{userkey: :a, fullname: "John", age: 34},%{userkey: :b, fullname: "Johna", age: 34}] }, %{fullname: "John", age: 34} 
+
+# add_friend2 docs
+# newnewnew = Friends.add_friend2(%{friends: %{}},%{fullname: "a", age: 34, userkey: "a"})
+# newnewnew = Friends.add_friend2(newnewnew,%{fullname: "b", age: 34, userkey: "b"})
 # Friends Data Model
 # Fields
 defmodule Friends do
@@ -21,6 +25,14 @@ defmodule Friends do
     the_items
   end
 
+  def add_friend2(friends, f) do 
+    inner = friends.friends
+    inner = Map.put(inner,String.to_atom(f.userkey), f)
+    outer = Map.put(friends,:friends,inner)
+    #Map.put(friends, String.to_atom(f.userkey), f)
+    outer
+  end
+  # newnew = Map.put(newmap,:friends,
   # Slug code 
   #slugged_key = Slug.slugify(f.fullname, separator: ?_)
     #the_items = Map.put(friends, String.to_atom(slugged_key), f)
